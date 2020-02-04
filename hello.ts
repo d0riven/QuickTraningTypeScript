@@ -36,3 +36,6 @@ let union: string | boolean;
 union = 'hoge';
 union = false;
 // union = 1;
+
+type FooType = [string, number, boolean];
+let fooType: FooType = ['abc', 1, false];

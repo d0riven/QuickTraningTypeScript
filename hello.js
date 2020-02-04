@@ -24,4 +24,4 @@ var m = Sex.MALE;
 var union;
 union = 'hoge';
 union = false;
-// union = 1;
+var fooType = ['abc', 1, false];
