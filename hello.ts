@@ -23,3 +23,11 @@ let obj: StringMap = {
     'foo' : 'ふう',
     'bar' : 'ばあ',
 };
+
+enum Sex {
+    MALE,
+    FEMALE,
+    UNKNOWN,
+}
+
+let m:Sex = Sex.MALE;
