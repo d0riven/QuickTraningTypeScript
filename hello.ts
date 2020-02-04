@@ -10,3 +10,6 @@ class Vendor {
         return "Hello, welcome to " + this.name;
     }
 }
+
+let strs: string[]  = ['hoge', 'fuga', 'piyo'];
+// let strs: string[]  = ['hoge', 'fuga', 1]; // 異なる型を入れるとエラーが出る
