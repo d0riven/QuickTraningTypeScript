@@ -9,10 +9,8 @@ var Vendor = /** @class */ (function () {
     return Vendor;
 }());
 var strs = ['hoge', 'fuga', 'piyo'];
-// let strs: string[]  = ['hoge', 'fuga', 1]; // 異なる型を入れるとエラーが出る
 var obj = {
     'hoeg': 'ほげ',
     'foo': 'ふう',
-    'bar': 'ばあ',
-    1: 'hoge'
+    'bar': 'ばあ'
 };
