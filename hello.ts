@@ -31,3 +31,8 @@ enum Sex {
 }
 
 let m:Sex = Sex.MALE;
+
+let union: string | boolean;
+union = 'hoge';
+union = false;
+// union = 1;

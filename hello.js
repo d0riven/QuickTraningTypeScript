@@ -21,3 +21,7 @@ var Sex;
     Sex[Sex["UNKNOWN"] = 2] = "UNKNOWN";
 })(Sex || (Sex = {}));
 var m = Sex.MALE;
+var union;
+union = 'hoge';
+union = false;
+// union = 1;
