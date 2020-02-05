@@ -12,7 +12,7 @@ var strs = ['hoge', 'fuga', 'piyo'];
 var obj = {
     'hoeg': 'ほげ',
     'foo': 'ふう',
-    'bar': 'ばあ'
+    'bar': 'ばあ',
 };
 var Sex;
 (function (Sex) {
@@ -25,3 +25,23 @@ var union;
 union = 'hoge';
 union = false;
 var fooType = ['abc', 1, false];
+var f = function () {
+    $('.hoge').css('background-color', 'Red');
+};
+$(f);
+var Person = /** @class */ (function () {
+    function Person() {
+    }
+    Object.defineProperty(Person.prototype, "age", {
+        get: function () {
+            return this._age;
+        },
+        set: function (value) {
+            this._age = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    return Person;
+}());
+new Person().age;

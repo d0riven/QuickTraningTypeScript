@@ -39,3 +39,20 @@ union = false;
 
 type FooType = [string, number, boolean];
 let fooType: FooType = ['abc', 1, false];
+
+let f = (): void => {
+    $('.hoge').css('background-color', 'Red');
+};
+$(f);
+
+class Person {
+    private _age: number;
+    get age(): number {
+        return this._age;
+    }
+    set age(value: number) {
+        this._age = value;
+    }
+}
+
+new Person().age;
