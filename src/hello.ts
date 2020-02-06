@@ -1,76 +1,89 @@
 // seed http://www.typescriptlang.org/play/?ssl=18&ssc=2&pln=8&pc=1#code/PTAEEFQYwGwQwM4NAS2XUCAOBTKK4ZQAXAT11AHsAzUAKTgDc4BlKAJxS2KoCMArPDwDuACxRRRAWABQIVOhjC4pZBxxxiOACahGBUBiiUAdgmLsArlGKV2AOlAAVUTgQ5o8JG9ny4Nw1AYSh4YFABrD0oBIQQAGkMTXVEmDzgTVBNXTmJ0qA9zKxtLdhxfMAQUAFsUeHYSSiD0gHNLOGa3TGtRQ2QGZmAAYQBiYBZhFGpie1ly0AAJHFKAcnQMnAAPOCqsGA9YRAQALlmZA6RQADUcJLtQAG9ZUFATbZwjzAsUE2aAblPnsYzBZrLZ2AAKV5Vd6fTg-ACUDyezxI4gQ9ihHgAvC83v8ZM8AL4A0DNUo4YjgxGPAko0rEEoZABEixgwQSwhwMGM0IaoCZoAA1Ki0Bi8cjiTJJXNwBlvuY8vt0qBePtSpodHoDMRXC8cMJQJFSMI7NoEultHNSJRLNBlVBCERoTrKNo1rp-PkLlh2JRcOxiChOtRfVVUWU5GBooIbDMZLIgeZMKI-aAcSZ9Vcbto7OCmQBNDwAeRg2g8LBTWCZ8Pxicoe3swWa4IQlfsZJwFKpNdO8nzNrtGQQll45zWfBj0wWSxwq0C1EorrtAdAYgk0kjoBS6D0cE4FNIvVXXKIiECmJO8bOXmQADFF9onEVwqBNlokshrrd6jTAZY0N8MKFN8fwkomII2LmF6wiBCRQP+lQZh8wEIkitLPMO-qQm8PboSK6LwQBGZptACGAfiRIkh2XbUsizz0oy-LzCgHJcjyHi2KAC5LhBL4CsKOqipiQr8o4ADqBRLIwHj8fh9iEYhHjCgK3HaPYTIUaAkrSpuABCeBwJY7jHpk2gSBqug6po4alHqOjIJxqokCahjsK00ImMQCBzJx6gauemb3q6T7WOECROOQOBsJw3CrrURA+pQ+hlq+7C+uw3mbmINygNatqmDAh5GVESGnOBuLQkWJiFSFUAvumgUPrV4R5iwhCUNCc7gDmvCUNW+JzIMdilDYhWgFghwgZkzmNHu7k3F5cVskEFK5QOflaIYcwZga8q5CY+RULQOoeEFj7PpeCamEmvEkTtoBnc1eYACKpHOz12CgtgIEyCRMvwlgmOE-VXWY9Y4I2lDNrx7bkpS8I1kAA
-var Vendor = /** @class */ (function () {
-    function Vendor(name) {
+class Vendor {
+    name: string;
+
+    constructor(name: string) {
         this.name = name;
     }
-    Vendor.prototype.greet = function () {
+
+    greet() {
         return "Hello, welcome to " + this.name;
-    };
-    return Vendor;
-}());
-var strs = ['hoge', 'fuga', 'piyo'];
-var obj = {
-    'hoeg': 'ほげ',
-    'foo': 'ふう',
-    'bar': 'ばあ',
+    }
+}
+
+let strs: string[]  = ['hoge', 'fuga', 'piyo'];
+// let strs: string[]  = ['hoge', 'fuga', 1]; // 異なる型を入れるとエラーが出る
+
+interface StringMap {
+    [index: string]: string;
+}
+
+let obj: StringMap = {
+    'hoeg' : 'ほげ',
+    'foo' : 'ふう',
+    'bar' : 'ばあ',
 };
-var Sex;
-(function (Sex) {
-    Sex[Sex["MALE"] = 0] = "MALE";
-    Sex[Sex["FEMALE"] = 1] = "FEMALE";
-    Sex[Sex["UNKNOWN"] = 2] = "UNKNOWN";
-})(Sex || (Sex = {}));
-var m = Sex.MALE;
-var union;
+
+enum Sex {
+    MALE,
+    FEMALE,
+    UNKNOWN,
+}
+
+let m:Sex = Sex.MALE;
+
+let union: string | boolean;
 union = 'hoge';
 union = false;
-var fooType = ['abc', 1, false];
-var f = function () {
+// union = 1;
+
+type FooType = [string, number, boolean];
+let fooType: FooType = ['abc', 1, false];
+
+let f = (): void => {
     $('.hoge').css('background-color', 'Red');
 };
 $(f);
-var Person = /** @class */ (function () {
-    function Person() {
+
+class Person {
+    private _age: number;
+    constructor(_age:number) {
+        this._age = _age;
     }
-    Object.defineProperty(Person.prototype, "age", {
-        get: function () {
-            return this._age;
-        },
-        set: function (value) {
-            this._age = value;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    return Person;
-}());
-new Person().age;
-function merge(obj1, obj2) {
-    var result = {};
-    for (var key in obj1) {
-        result[key] = obj1[key];
+    get age(): number {
+        return this._age;
     }
-    for (var key in obj2) {
-        result[key] = obj2[key];
+    set age(value: number) {
+        this._age = value;
+    }
+}
+
+let p = new Person(5);
+p.age;
+p.age = 10;
+
+function merge<T, R>(obj1: T, obj2: R): T & R {
+    let result = <T & R>{};
+    for (let key in obj1) {
+        (<any>result)[key] = obj1[key];
+    }
+    for (let key in obj2) {
+        (<any>result)[key] = obj2[key];
     }
     return result;
 }
-var Book = /** @class */ (function () {
-    function Book(title, price) {
-        this.title = title;
-        this.price = price;
+
+class Book {
+    constructor(private title: string, private price: number) {
     }
-    Book.prototype.toString = function () {
+    toString() {
         return this.title + ' ' + this.price;
-    };
-    return Book;
-}());
-var Logger = /** @class */ (function () {
-    function Logger() {
     }
-    Logger.prototype.debug = function () {
+}
+class Logger {
+    debug() {
         console.log(this.toString());
-    };
-    return Logger;
-}());
-var merged = merge(new Book('Javascript本格入門', 2980), new Logger());
+    }
+}
+
+let merged  = merge(new Book('Javascript本格入門', 2980), new Logger());
